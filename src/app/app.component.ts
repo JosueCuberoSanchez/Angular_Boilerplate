@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { Router } from '@angular/router';
 
 // Modules
 import { SharedModule } from './shared/shared.module';
 
 // Services
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AuthGuardService } from './core/services/authentication/auth-guard.service';
 
 @Component({
   selector: 'app-root',
@@ -13,16 +15,27 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class AppComponent implements OnInit {
   title = 'app';
+  authenticated: boolean;
 
-  constructor(private spinner: NgxSpinnerService) { }
+  constructor(private spinner:NgxSpinnerService, private authGuardService:AuthGuardService, private router:Router) {
+
+    // subscribe to a route observer, each time route changes it will decide if navbar is shown
+    router.events.subscribe((val) =>
+      this.authenticated = this.authGuardService.isLoggedIn()
+    );
+
+  }
 
   ngOnInit() {
-    /** spinner starts on init */
-    this.spinner.show();
 
+    this.spinner.show();
     setTimeout(() => {
-        /** spinner ends after 5 seconds */
         this.spinner.hide();
-    }, 5000);
+    }, 2000);
+
+  }
+
+  logout() {
+    this.authGuardService.logout();
   }
 }

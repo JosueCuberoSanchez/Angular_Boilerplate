@@ -1,8 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <ngx-spinner></ngx-spinner>
-<a routerLink="character/list">CL</a>
-<a routerLink="character/1">Character</a>
-<a [routerLink]="['vehicle/1']">Vehicle</a>
-<a [routerLink]="['planet/1']">Planet</a>
+<div *ngIf="authenticated"> <!-- if not authenticated do not show navbar -->
+  <a routerLink="character/list">CL</a>
+  <a routerLink="character/1">Character</a>
+  <a [routerLink]="['vehicle/1']">Vehicle</a>
+  <a [routerLink]="['planet/1']">Planet</a>
+  <button (click)="logout();">Logout</button>
+</div>
 
 <router-outlet></router-outlet>

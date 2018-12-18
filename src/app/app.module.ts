@@ -11,9 +11,9 @@ import './shared/vendor/imports';
 // Modules
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { CharacterModule } from './featured/characters/character.module';
 import { PlanetModule } from './featured/planets/planet.module';
 import { VehicleModule } from './featured/vehicles/vehicle.module';
+import { AuthenticationModule } from './featured/authentication/authentication.module';
 
 
 @NgModule({
@@ -25,9 +25,9 @@ import { VehicleModule } from './featured/vehicles/vehicle.module';
     AppRoutingModule,
     CoreModule,
     SharedModule,
-    CharacterModule,
     PlanetModule,
-    VehicleModule
+    VehicleModule,
+    AuthenticationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

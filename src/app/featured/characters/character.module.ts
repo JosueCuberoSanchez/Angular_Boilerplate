@@ -1,3 +1,5 @@
+// This module is lazy loaded on background
+
 import { NgModule } from '@angular/core';
 
 import { RouterModule } from '@angular/router';
@@ -12,7 +14,7 @@ import { CharacterListComponent } from './components/character-list/character-li
     CharacterListComponent
   ],
   imports: [
-    RouterModule.forChild([
+    RouterModule.forChild([ // lazy load
       { path: 'list', component: CharacterListComponent },
       { path: ':id', component: CharacterComponent }
     ])
